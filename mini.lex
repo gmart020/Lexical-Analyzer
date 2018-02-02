@@ -12,9 +12,9 @@ DIGIT	[0-9]
 %%
 
 "function"		{printf("FUNCTION\n"); colNum += yyleng;}
-"beginparams"	{printf("BEGIN_PARAMS\n"); colNum += yyleng;}
+"beginparams"		{printf("BEGIN_PARAMS\n"); colNum += yyleng;}
 "endparams"		{printf("END_PARAMS\n"); colNum += yyleng;}
-"beginlocals"	{printf("BEGIN_LOCALS\n"); colNum += yyleng;}
+"beginlocals"		{printf("BEGIN_LOCALS\n"); colNum += yyleng;}
 "endlocals"		{printf("END_LOCALS\n"); colNum += yyleng;}
 "beginbody"		{printf("BEGIN_BODY\n"); colNum += yyleng;}
 "endbody"		{printf("END_BODY\n"); colNum += yyleng;}
@@ -43,24 +43,24 @@ DIGIT	[0-9]
 
 "=="			{printf("EQ\n"); colNum +=yyleng;}
 "<>"			{printf("NEQ\n"); colNum +=yyleng;}
-"<"				{printf("LT\n"); colNum +=yyleng;}
-">"				{printf("GT\n"); colNum +=yyleng;}
+"<"			{printf("LT\n"); colNum +=yyleng;}
+">"			{printf("GT\n"); colNum +=yyleng;}
 "<="			{printf("LTE\n"); colNum +=yyleng;}
 ">="			{printf("GTE\n"); colNum +=yyleng;}
 
-"-"				{printf("SUB\n"); colNum +=yyleng;}
-"+"				{printf("ADD\n"); colNum +=yyleng;}
-"*"				{printf("MULT\n"); colNum +=yyleng;}
-"/"				{printf("DIV\n"); colNum +=yyleng;}
-"%"				{printf("MOD\n"); colNum +=yyleng;}
+"-"			{printf("SUB\n"); colNum +=yyleng;}
+"+"			{printf("ADD\n"); colNum +=yyleng;}
+"*"			{printf("MULT\n"); colNum +=yyleng;}
+"/"			{printf("DIV\n"); colNum +=yyleng;}
+"%"			{printf("MOD\n"); colNum +=yyleng;}
 
-";"				{printf("SEMICOLON\n"); colNum +=yyleng;}
-":"				{printf("COLON\n"); colNum +=yyleng;}
-","				{printf("COMMA\n"); colNum +=yyleng;}
-"("				{printf("L_PAREN\n"); colNum +=yyleng;}
-")"				{printf("R_PAREN\n"); colNum +=yyleng;}
-"["				{printf("L_SQUARE_BRACKET\n"); colNum +=yyleng;}
-"]"				{printf("R_SQUARE_BRACKET\n"); colNum +=yyleng;}
+";"			{printf("SEMICOLON\n"); colNum +=yyleng;}
+":"			{printf("COLON\n"); colNum +=yyleng;}
+","			{printf("COMMA\n"); colNum +=yyleng;}
+"("			{printf("L_PAREN\n"); colNum +=yyleng;}
+")"			{printf("R_PAREN\n"); colNum +=yyleng;}
+"["			{printf("L_SQUARE_BRACKET\n"); colNum +=yyleng;}
+"]"			{printf("R_SQUARE_BRACKET\n"); colNum +=yyleng;}
 ":="			{printf("ASSIGN\n"); colNum +=yyleng;}
 
 {DIGIT}+		{printf("NUMBER %d\n", atoi(yytext)); colNum += yyleng;}
@@ -74,7 +74,7 @@ DIGIT	[0-9]
 
 "##"+([^\n]*)	/* Ignore the comments*/
 
-({DIGIT}|"_")({DIGIT}|{LETTER}|"_")*	{printf("Error at line %d, column %d: identifier \"%s\" must begin with a letter\n", lineNum, colNum, yytext); exit(0);}
+({DIGIT}|"_")({DIGIT}|{LETTER}|"_")*		{printf("Error at line %d, column %d: identifier \"%s\" must begin with a letter\n", lineNum, colNum, yytext); exit(0);}
 
 {LETTER}({LETTER}|{DIGIT}|"_")*"_"+		{printf("Error at line %d, column %d: identifier \"%s\" cannot end with an underscore\n", lineNum, colNum, yytext); exit(0);}
 
